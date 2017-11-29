@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+  background-image: url('https://www.jpl.nasa.gov/assets/images/content/tmp/home/missions_bg_image.jpg');
+  background-position: 100%;
+}

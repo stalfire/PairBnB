@@ -1,0 +1,27 @@
+<h>Listing</h>
+<table>
+    <thead>
+      <tr>
+      	<th>Name</th>
+        <th>Place Type</th>
+        <th>Property Type</th>
+   		<th>Room Number</th>
+    	<th>Bed Number</th>
+    	<th>Guest Number</th>
+    	<th>Country</th>
+    	<th>State</th>
+    	<th>City</th>
+    	<th>Zip Code</th>
+    	<th>Address</th>
+    	<th>Price</th>
+    	<th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table>
+	<% @all_listings.each do |x| %>
+		<p><%= x.name %><%= x.place_type %><%= x.property_type %><%= x.room_number %><%= x.bed_number %><%= x.guest_number %><%= x.country %><%= x.state %><%= x.city %><%= x.zipcode %><%= x.address %><%= x.price %><%= x.description %></p>
+		<%end%>
+	<%= will_paginate @all_listings %>
