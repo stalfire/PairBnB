@@ -1,28 +1,4 @@
 <h1>New Listing</h1>
- <%= form_for @listing, :html => {:multipart => true} do |t| %>
-  <p>
-  <%= t.label :avatar %><br>
-    <%= t.file_field :avatar %>
-  </p>
-  <p>
-    <%= t.label :name %><br>
-    <%= t.text_field :name %>
-  </p>
- 
-  <p>
-    <%= t.label :country %><br>
-    <%= t.text_area :country %>
-  </p>
- 
- <p>
-    <%= t.label :zipcode %><br>
-    <%= t.text_area :zipcode %>
-  </p>
-  <%= t.hidden_field :user_id, :value => current_user.id %>
-  <p>
-    <%= t.submit %>
-  </p>
- 
-<% end %>
+<%= render '/listings/form' %>
 
-<%= link_to 'Back', listing_path(current_user.id) %>
+<%= link_to 'Back', root_path %>

@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
 		@listing = Listing.new
 	end
 	def create
-		@listing = Listing.new(listing_from_params)
+		@listing = current_user.listings.new(listing_from_params)
   		if @listing.save
     		redirect_to root_path
   		else
@@ -18,12 +18,15 @@ class ListingsController < ApplicationController
 		@listing = Listing.where(user_id: current_user.id)
 	end
 	def update
-		@listing = Listing.where(user_id: current_user.id)
+		@listing = Listing.find(params[:id])
 		if @listing.update(listing_from_params)
 	    	redirect_to root_path
 	  	else
 	    	render 'edit'
 	  	end
+	end
+	def show
+		@listing = Listing.find(params[:id])
 	end
 
 private

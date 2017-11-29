@@ -1,33 +1,12 @@
-<h1>Edit listing</h1>
+<h1>MY listing</h1>
 <%if @listing == nil %>
+  <p>You dont have any listing</p>
+  <p>Create a new listing ?></p>
+  <p><%= link_to "New Listing", new_listing_path(user_id: current_user.id) %></p>
 <%else%>
 <% @listing.each do |x| %>
- <%= form_for x, :html => {:multipart => true} do |t| %>
-  <p>
-  <%= t.label :avatar %><br>
-    <%= t.file_field :avatar %>
-  </p>
-  <p>
-    <%= t.label :name %><br>
-    <%= t.text_field :name %>
-  </p>
- 
-  <p>
-    <%= t.label :country %><br>
-    <%= t.text_area :country %>
-  </p>
- 
- <p>
-    <%= t.label :zipcode %><br>
-    <%= t.text_area :zipcode %>
-  </p>
-
-  <p>
-    <%= t.submit %>
-  </p>
- 
-<% end %>
+ <p><%= link_to x.name, x %></p>
 <%end%>
 <%end%>
-<%= link_to 'Back', listing_path(current_user.id) %>
+<%= link_to 'Back', root_path %>
 

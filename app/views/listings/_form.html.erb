@@ -1,0 +1,21 @@
+ <%= form_for @listing do |t| %>
+  <p>
+    <%= t.label :name %><br>
+    <%= t.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= t.label :country %><br>
+    <%= t.text_area :country %>
+  </p>
+ 
+ <p>
+    <%= t.label :zipcode %><br>
+    <%= t.text_area :zipcode %>
+  </p>
+  <%= t.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= t.submit %>
+  </p>
+ 
+<% end %>
