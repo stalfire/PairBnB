@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
 
 private
 	def listing_from_params
-		params.require(:listing).permit(:name,:country,:zipcode,:avatar,:user_id)
+		params.require(:listing).permit(:title,:description,:country_code,:max_guests,:price,:user_id)
 	end
 =begin
 #dont know what is this	

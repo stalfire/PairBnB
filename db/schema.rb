@@ -38,20 +38,12 @@ ActiveRecord::Schema.define(version: 20171129053304) do
   end
 
   create_table "listings", force: :cascade do |t|
-    t.string "name"
-    t.string "place_type"
-    t.string "property_type"
-    t.string "room_number"
-    t.string "bed_number"
-    t.string "guest_number"
-    t.string "country"
-    t.string "state"
-    t.string "city"
-    t.string "zipcode"
-    t.string "address"
-    t.integer "price"
-    t.string "description"
+    t.string "title"
     t.bigint "user_id"
+    t.text "description"
+    t.integer "max_guests"
+    t.integer "price"
+    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"

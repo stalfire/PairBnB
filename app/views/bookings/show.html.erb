@@ -1,0 +1,25 @@
+<h2>MY Bookings</h2>
+<table>
+  <tr>
+    <th>Listing Title</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Num Guests</th>
+    <th>Total Price</th>
+    <th>Actions</th>
+  </tr>
+	<% @booking.each do |t| %>
+		<% @listing.each do |f| %>
+			<%if t.listing_id == f.id%>
+			<tr>
+				<td><%= link_to f.title, f %></td>
+				<td><%= t.start_date.strftime('%d %B %Y') %></td>
+				<td><%= t.end_date.strftime('%d %B %Y') %></td>
+				<td><%= t.num_guests %></td>
+				<td><%= t.total_price %></td>
+				<td><%= link_to "Cancel Booking", t, method: :delete %></td>
+			</tr>
+			<%end%>
+		<%end%>	
+	<%end%>
+</table>

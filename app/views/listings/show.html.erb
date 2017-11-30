@@ -1,3 +1,15 @@
-<%= render '/listings/form' %>
-
-<%= link_to "Back", edit_listing_path(@listing) %>
+<% if current_user == nil || @listing.user_id != current_user.id %>
+	<p style="color: green">Listing Title: <%= @listing.title %></p>
+	<p style="color: green">Listing Description:<%= @listing.description %></p>
+	<p style="color: green">Listing Country: <%= @listing.country_code %></p>
+	<p style="color: green">Listing Max Guests: <%= @listing.max_guests %></p>
+	<p style="color: green">Listing Price: <%= @listing.price %></p>
+		<% if current_user == nil %>
+			<p>Please sign in to reserve it</p>
+		<%else%>
+		    <p><%= link_to "Book Now", new_listing_booking_path(@listing)%></p>
+		<%end%>
+		<p><%= link_to "Back", listings_path%></p>
+<%elsif @listing.user_id == current_user.id %>
+	<%= render '/listings/form' %>
+<%end%>	

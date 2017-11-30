@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resource :password, controller: "clearance/passwords", only: [:create, :edit, :update]
   end
   resources :listings do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :new]
   end
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:show, :destroy]
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
