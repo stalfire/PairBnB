@@ -5,12 +5,13 @@ class BookingsController < ApplicationController
   end
   def create
     @listing = Listing.find(params[:listing_id])
+    @host = User.find(@listing.user_id)
     @booking = current_user.bookings.new(booking_params)
     @booking.listing = @listing
     if @booking.save
+      ReservationMailer.booking_email(current_user,@host,@booking.id).deliver_later
       redirect_to booking_path(current_user.id)
     else
-      byebug
       redirect_to root_path
     end
   end
