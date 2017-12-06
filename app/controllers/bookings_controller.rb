@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.new(booking_params)
     @booking.listing = @listing
     if @booking.save
-      ReservationJob.perform_now(current_user,@host,@booking.id)
+      ReservationJob.perform_later(current_user,@host,@booking.id)
       redirect_to booking_path(current_user.id)
     else
       redirect_to root_path
