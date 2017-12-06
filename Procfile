@@ -1,3 +1,3 @@
 redis: redis-server
 worker: bundle exec sidekiq -q default -q mailers
-web: bundle exec rails bd:migrate
+web: heroku rails bd:migrate
