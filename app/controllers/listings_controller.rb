@@ -28,12 +28,10 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.find(params[:id])
 	end
-	def search
-		
-	end
-	def self.search_result(params)
-  		filtering_params(params).each do |key, value|
-    	@listings = @listings.public_send(key, value) if value.present?
+	def search_listings
+		@listings = Listing.where(nil)
+		filtering_params(params).each do |key, value|
+    	@listings_result = @listings.public_send(key, value) if value.present?
   		end
 	end
 
