@@ -28,10 +28,21 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.find(params[:id])
 	end
+	def search
+		
+	end
+	def self.search_result(params)
+  		filtering_params(params).each do |key, value|
+    	@listings = @listings.public_send(key, value) if value.present?
+  		end
+	end
 
 private
 	def listing_from_params
 		params.require(:listing).permit(:title,:description,:country_code,:max_guests,:price,:user_id)
+	end
+	def filtering_params(params)
+  		params.slice(:title,:country_code,:max_guests,:price)
 	end
 =begin
 #dont know what is this	

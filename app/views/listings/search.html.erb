@@ -1,0 +1,6 @@
+<%= form_tag(listings_path, method: :get) do %>
+  <%= text_field_tag :title, params[:title] %>
+  <%= submit_tag 'Search', name: nil %>
+<br>
+<%= link_to "Back", root_path %>
+<%end%>
